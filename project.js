@@ -1,7 +1,7 @@
 
 const API_KEY = "0133cc5316757ac730cc46ae342334e4";
 
-// Correct selectors
+
 const cityInput = document.getElementById("cityInput");
 const cityEl = document.getElementById("city");
 const tempEl = document.getElementById("temp");
@@ -10,11 +10,11 @@ const humidityEl = document.getElementById("humidity");
 const windEl = document.getElementById("wind");
 const historyDiv = document.getElementById("history");
 
-// Load history
+
 let cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || [];
 displayHistory();
 
-// ✅ MAIN FUNCTION (called from button)
+
 async function getWeather(cityName) {
 
     console.log("1️⃣ Sync Start");
@@ -43,14 +43,14 @@ async function getWeather(cityName) {
 
         console.log("4️⃣ Data processed");
 
-        // ✅ Update UI (matches your HTML)
+        
         cityEl.innerText = `${data.name}, ${data.sys.country}`;
         tempEl.innerText = `${data.main.temp} °C`;
         weatherEl.innerText = data.weather[0].main;
         humidityEl.innerText = `${data.main.humidity}%`;
         windEl.innerText = `${data.wind.speed} m/s`;
 
-        // ✅ Save history
+        
         if (!cityHistory.includes(city)) {
             cityHistory.push(city);
             localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
@@ -65,7 +65,7 @@ async function getWeather(cityName) {
     console.log("5️⃣ Sync End");
 }
 
-// ✅ DISPLAY HISTORY
+
 function displayHistory() {
     historyDiv.innerHTML = "";
 
